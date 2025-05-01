@@ -1,131 +1,240 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Nova Executor</title>
-
-  <!-- OG META TAGS -->
-  <meta property="og:title" content="Nova Executor - Powerful Tool for Roblox" />
-  <meta property="og:description" content="Download Nova Executor now. Join our Discord or WhatsApp Community to stay updated!" />
-  <meta property="og:image" content="https://i.imgur.com/164btSe.jpeg" />
-  <meta property="og:url" content="https://getnova.github.io" />
-  <meta property="og:type" content="website" />
- 
   <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { height: 100%; }
     body {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background: #111;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #101827;
       color: #fff;
-      font-family: 'Helvetica Neue', Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    section {
+      padding: 100px 20px;
+      max-width: 1000px;
+      margin: auto;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease-out;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero {
       text-align: center;
-      padding: 1rem;
+      padding-top: 120px;
     }
 
-    .status {
-      font-size: 1.1rem;
-      color: #ff4444;
-      margin-bottom: 0.5rem;
-      animation: slideUp 0.8s ease-out forwards;
-      opacity: 0;
-      transform: translateY(50px);
-      animation-delay: 0.15s;
+    .hero h1 {
+      font-size: 52px;
+      margin-bottom: 10px;
     }
 
-    h1 {
-      font-size: 2.5rem;
-      letter-spacing: 0.1em;
-      margin-bottom: 1rem;
-      opacity: 0;
-      transform: translateY(50px);
-      animation: slideUp 0.8s ease-out forwards;
-      animation-delay: 0.2s;
-    }
-
-    p.subtitle {
-      font-size: 1rem;
-      opacity: 0;
-      transform: translateY(50px);
-      animation: slideUp 0.8s ease-out forwards;
-      animation-delay: 0.3s;
-      margin-bottom: 2rem;
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 30px;
     }
 
     .buttons {
       display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      width: 100%;
-      max-width: 320px;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 80px;
     }
 
-    .btn {
-      padding: 1rem;
-      background: #0044cc;
-      border: none;
-      border-radius: 4px;
+    .buttons a {
+      background: #007bff;
       color: #fff;
+      padding: 14px 30px;
+      border-radius: 6px;
       text-decoration: none;
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      opacity: 0;
-      transform: translateY(50px);
-      animation: slideUp 0.8s ease-out forwards;
-      transition: background 0.3s;
+      font-weight: bold;
     }
 
-    .btn:hover {
-      background: #0055ee;
+    .tilt-container {
+      perspective: 1000px;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 100px;
     }
 
-    .btn:nth-child(1) { animation-delay: 0.4s; }
-    .btn:nth-child(2) { animation-delay: 0.5s; }
-    .btn:nth-child(3) { animation-delay: 0.6s; }
+    .tilt-img {
+      width: 450px;
+      transform-style: preserve-3d;
+      transition: transform 0.2s ease;
+    }
 
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(50px); }
-      to   { opacity: 1; transform: translateY(0); }
+    .faq h2, .features h2 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 30px;
+    }
+
+    .faq-item {
+      background: #182132;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      padding: 15px 20px;
+      cursor: pointer;
+      font-weight: bold;
+      background: #1e273a;
+      position: relative;
+    }
+
+    .faq-question::after {
+      content: '►';
+      position: absolute;
+      right: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.active .faq-question::after {
+      content: '▼';
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      background: #243047;
+      padding: 0 20px;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 200px;
+      padding: 15px 20px;
+    }
+
+    .faq-answer a {
+      color: #4da6ff;
+      text-decoration: underline;
+    }
+
+    .features ul {
+      list-style: none;
+      padding: 0;
+      font-size: 18px;
+    }
+
+    .features li {
+      margin-bottom: 20px;
     }
 
     footer {
-      position: absolute;
-      bottom: 1rem;
-      font-size: 0.75rem;
-      opacity: 0.5;
-      transform: translateY(50px);
-      animation: slideUp 0.8s ease-out forwards;
-      animation-delay: 0.7s;
+      text-align: center;
+      padding: 30px 20px;
+      background: #182132;
+      color: #ccc;
+      margin-top: 60px;
     }
   </style>
 </head>
 <body>
 
-  <!-- Status bar -->
-  <div class="status">Status: 🔴</div>
+  <section class="hero">
+    <h1>Nova Executor</h1>
+    <p>Fast, reliable, and secure execution tool. Join our community and get started now.</p>
+    <div class="buttons">
+      <a href="#download-link">Download Now</a>
+      <a href="https://discord.com/invite/yourserver" target="_blank">Join Discord</a>
+      <a href="https://chat.whatsapp.com/yourcommunity" target="_blank">WhatsApp</a>
+    </div>
+  </section>
 
-  <!-- Judul utama -->
-  <h1>NOVA EXECUTOR</h1>
-  <p class="subtitle">Download, Discord &amp; WhatsApp Community</p>
+  <section class="tilt-container">
+    <img
+      src="https://i.imgur.com/DMq21lE.jpeg"
+      alt="Nova Executor Showcase"
+      class="tilt-img"
+      id="tilt-img"
+    />
+  </section>
 
-  <!-- Tombol -->
-  <div class="buttons">
-    <a id="download-btn" class="btn" href="#">Download</a>
-    <a id="discord-btn"  class="btn" href="#">Discord Server</a>
-    <a id="whatsapp-btn" class="btn" href="#">WhatsApp Community</a>
-  </div>
+  <section class="faq">
+    <h2>FAQ</h2>
+    <div class="faq-item">
+      <div class="faq-question">Is Nova safe?</div>
+      <div class="faq-answer">Yes it is. We always provide the best safe executor.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Can we get banned using Nova?</div>
+      <div class="faq-answer">Yes, almost all free PC executors are detected and can get you banned.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Is Nova free?</div>
+      <div class="faq-answer">Yes it is. No key system at all, but we are planning to make one.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">What API does Nova use?</div>
+      <div class="faq-answer">
+        We use Xeno API — all credits to Rizve.
+        <a href="https://discord.gg/xeno-now" target="_blank">Xeno Discord Server</a>
+      </div>
+    </div>
+  </section>
 
-  <footer>© 2025 Nova Executor, Made with love using Xeno API</footer>
+  <section class="features" id="features">
+    <h2>Why Choose Nova Executor?</h2>
+    <ul>
+      <li><strong>Blazing Fast:</strong> Minimal delay with high-speed results.</li>
+      <li><strong>Secure & Safe:</strong> Protected, private execution environment.</li>
+      <li><strong>100% Free:</strong> We always provide the best free executor without a key system.</li>
+    </ul>
+  </section>
+
+  <footer>
+    &copy; 2025 Nova Executor. All rights reserved.
+  </footer>
 
   <script>
-    document.getElementById('download-btn').href = 'https://www.mediafire.com/file/kfhsit2cxtrznwg/Nova+v2.rar/file';
-    document.getElementById('discord-btn').href    = 'https://discord.gg/xxxxxx';
-    document.getElementById('whatsapp-btn').href = 'https://whatsapp.com/channel/0029Vb60YvVJJhzRN94YGB2C';
+    // Scroll animation
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+    sections.forEach(section => observer.observe(section));
+
+    // Tilt effect: Only left/right (rotateY), more tilt on mobile
+    const img = document.getElementById('tilt-img');
+    const container = document.querySelector('.tilt-container');
+    const isMobile = window.innerWidth < 768;
+
+    if (!isMobile) {
+      container.addEventListener('mousemove', (e) => {
+        const rect = container.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        img.style.transform = `rotateY(${x * 20}deg)`;
+      });
+      container.addEventListener('mouseleave', () => {
+        img.style.transform = 'rotateY(0deg)';
+      });
+    } else {
+      img.style.transform = 'rotateY(15deg)';
+    }
+
+    // FAQ toggle
+    document.querySelectorAll('.faq-question').forEach(q => {
+      q.addEventListener('click', () => {
+        q.parentElement.classList.toggle('active');
+      });
+    });
   </script>
+
 </body>
 </html>
