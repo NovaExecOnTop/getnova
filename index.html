@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Nova Executor</title>
 
-  <!-- OG META TAGS for Discord & social media previews -->
+  <!-- OG META TAGS -->
   <meta property="og:title" content="Nova Executor - Powerful Tool for Roblox" />
   <meta property="og:description" content="Download Nova Executor now. Join our Discord or WhatsApp Community to stay updated!" />
   <meta property="og:image" content="https://i.imgur.com/9DboIpJ.jpeg" />
@@ -27,8 +27,18 @@
       padding: 1rem;
     }
 
+    .status {
+      font-size: 1.1rem;
+      color: #ff4444;
+      margin-bottom: 0.5rem;
+      animation: slideUp 0.8s ease-out forwards;
+      opacity: 0;
+      transform: translateY(50px);
+      animation-delay: 0.15s;
+    }
+
     h1 {
-      font-size: 3rem;
+      font-size: 2.5rem;
       letter-spacing: 0.1em;
       margin-bottom: 1rem;
       opacity: 0;
@@ -96,9 +106,14 @@
 </head>
 <body>
 
+  <!-- Status bar -->
+  <div class="status">Status: 🔴</div>
+
+  <!-- Judul utama -->
   <h1>NOVA EXECUTOR</h1>
   <p class="subtitle">Download, Discord &amp; WhatsApp Community</p>
 
+  <!-- Tombol -->
   <div class="buttons">
     <a id="download-btn" class="btn" href="#">Download</a>
     <a id="discord-btn"  class="btn" href="#">Discord Server</a>
@@ -112,6 +127,5 @@
     document.getElementById('discord-btn').href    = 'https://discord.gg/xxxxxx';
     document.getElementById('whatsapp-btn').href = 'https://whatsapp.com/channel/0029Vb60YvVJJhzRN94YGB2C';
   </script>
-
 </body>
 </html>
